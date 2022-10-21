@@ -7,7 +7,7 @@ const Navbar = () => {
 		<div className="h-[80px] bg-indigo-600">
 			<div className="w-full flex justify-center items-center">
 				<div className="text-center text-white text-2xl font-bold">
-					Your Location : {location}
+					{location}
 				</div>
 			</div>
 		</div>
