@@ -13,3 +13,7 @@
 * Singin or Register authentication implemented
 * Taking user locations and showing it in different routes
 * Responsive design
+
+## Preview
+
+![alt text](https://i.ibb.co/fqvMYX2/image.png)
