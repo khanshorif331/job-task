@@ -5,7 +5,9 @@
 * React 
 * Typescript
 * Redux
+* Redux-toolkit
 * React Router Dom
+* Talwind
 
 ## Key Features
 * Singin or Register authentication implemented
