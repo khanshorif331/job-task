@@ -2,9 +2,17 @@ import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { MdOutlineVisibility, MdOutlineVisibilityOff } from 'react-icons/md'
+import { useDispatch, useSelector } from 'react-redux'
+import { useAppDispatch, useAppSelector } from '../Store/hooks'
+import { register as Registration } from '../Store/user/UserSlice'
 
 const Register = () => {
 	const [showPassword, setShowPassword] = React.useState(false)
+	const users = useAppSelector(state => state.users)
+	console.log(users, 'users')
+
+	// const User = useSelector(state.user=>state.user)
+	const dispatch = useAppDispatch()
 
 	type NewUser = {
 		name: string
@@ -25,6 +33,7 @@ const Register = () => {
 
 	const handleRegister = (data: NewUser) => {
 		console.log(data)
+		dispatch(Registration(data))
 		reset()
 	}
 
