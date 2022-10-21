@@ -1,13 +1,18 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 import { useForm } from 'react-hook-form'
 import { MdOutlineVisibilityOff, MdOutlineVisibility } from 'react-icons/md'
+import { useAppDispatch, useAppSelector } from '../Store/hooks'
+import { login as LoggingIn } from '../Store/user/UserSlice'
 
 const Login = () => {
 	const [showPassword, setShowPassword] = React.useState(false)
+	const dispatch = useAppDispatch()
+	const users = useAppSelector(state => state.users)
 
 	type User = {
+		name: null
 		email: string
 		password: string
 	}
@@ -18,12 +23,22 @@ const Login = () => {
 		handleSubmit,
 		reset,
 	} = useForm<User>()
-	// const navigate = useNavigate()
+	const navigate = useNavigate()
 	// let location = useLocation()
 	// let from = location.state?.from?.pathname || '/'
 
 	const handleLogin = (data: User) => {
-		console.log(data)
+		// const checkUser = users.find(user=>user.email===data.email && user.password===data.password)
+		dispatch(LoggingIn(data))
+		console.log(data, 'login')
+		if (users.loggedIn) {
+			navigate('/location')
+		} else {
+			alert('Invalid Credentials')
+		}
+		// navigate('/register')
+		console.log(users.loggedIn, 'status')
+
 		reset()
 	}
 

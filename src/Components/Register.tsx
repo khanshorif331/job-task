@@ -8,6 +8,7 @@ import { register as Registration } from '../Store/user/UserSlice'
 
 const Register = () => {
 	const [showPassword, setShowPassword] = React.useState(false)
+	const navigate = useNavigate()
 	const users = useAppSelector(state => state.users)
 	console.log(users, 'users')
 
@@ -27,7 +28,6 @@ const Register = () => {
 		reset,
 	} = useForm<NewUser>()
 
-	// const navigate = useNavigate()
 	// let location = useLocation();
 	// let from = location.state?.from?.pathname || "/";
 
@@ -35,6 +35,7 @@ const Register = () => {
 		console.log(data)
 		dispatch(Registration(data))
 		reset()
+		navigate('/location')
 	}
 
 	return (

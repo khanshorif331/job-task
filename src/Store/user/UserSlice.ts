@@ -2,18 +2,18 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 
 interface user {
-    name: string,
+    name: string | null,
     email: string,
     password: string,
 }
 
 interface userState {
-    value : user[]
+    users : user[]
     loggedIn: boolean
 }
 
 const initialState: userState = {
-    value: [],
+    users: [],
     loggedIn: false
 }
 
@@ -22,12 +22,13 @@ export const userSlice = createSlice({
     initialState,
     reducers: {
         register: (state, action: PayloadAction<user>) => {
-            state.value=[...state.value, 
+            state.users=[...state.users, 
                 action.payload]
             // state.value.push(action.payload)
         },
         login: (state, action: PayloadAction<user>) => {
-            const user = state.value.find((user) => user.email === action.payload.email)
+            // state.loggedIn = true
+            const user = state.users.find((user) => user.email === action.payload.email && user.password === action.payload.password)
             if(user){
                  state.loggedIn = true
             }else{
