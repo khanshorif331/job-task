@@ -10,7 +10,6 @@ const Location = () => {
 	const users = useAppSelector(state => state.users)
 	const dispatch = useAppDispatch()
 	const navigate = useNavigate()
-	console.log(users.location)
 
 	const handleLocation = (data: any) => {
 		dispatch(location(data.location))
@@ -25,7 +24,7 @@ const Location = () => {
 					<button>Login</button>
 				</Link>
 			</p>
-			<p className="absolute top-0 text-2xl p-2">{time}</p>
+			<p className="absolute top-0 text-2xl p-2 text-white">{time}</p>
 			<div className="border-2 border-black p-10">
 				<h1 className="text-center">Enter Your Current Location</h1>
 

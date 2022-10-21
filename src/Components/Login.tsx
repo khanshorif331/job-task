@@ -25,25 +25,19 @@ const Login = () => {
 		reset,
 	} = useForm<User>()
 	const navigate = useNavigate()
-	// let location = useLocation()
-	// let from = location.state?.from?.pathname || '/'
 
 	const handleLogin = (data: User) => {
-		// const checkUser = users.find(user=>user.email===data.email && user.password===data.password)
 		dispatch(
 			LoggingIn({
 				...data,
 				currentUser: data.email,
 			})
 		)
-		console.log(data, 'login')
 		if (users.loggedIn) {
 			navigate('/location')
 		} else {
 			alert('Invalid Credentials')
 		}
-		// navigate('/register')
-		console.log(users.loggedIn, 'status')
 
 		reset()
 	}
