@@ -19,6 +19,7 @@ const Register = () => {
 		name: string
 		email: string
 		password: string
+		currentUser: string
 	}
 
 	const {
@@ -33,7 +34,12 @@ const Register = () => {
 
 	const handleRegister = (data: NewUser) => {
 		console.log(data)
-		dispatch(Registration(data))
+		dispatch(
+			Registration({
+				...data,
+				currentUser: data.email,
+			})
+		)
 		reset()
 		navigate('/location')
 	}

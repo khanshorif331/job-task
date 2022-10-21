@@ -1,18 +1,30 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { useAppSelector } from '../Store/hooks'
+import { Link, useNavigate } from 'react-router-dom'
+import { useAppDispatch, useAppSelector } from '../Store/hooks'
+import { location } from '../Store/user/UserSlice'
 
 const Location = () => {
 	const time = new Date().toLocaleTimeString()
 	const { register, handleSubmit, reset } = useForm()
 	const users = useAppSelector(state => state.users)
+	const dispatch = useAppDispatch()
+	const navigate = useNavigate()
+	console.log(users.location)
 
 	const handleLocation = (data: any) => {
+		dispatch(location(data.location))
 		reset()
+		navigate('/')
 		console.log(data)
 	}
 	return (
 		<div className="flex flex-col items-center justify-center w-full h-screen">
+			<p className="absolute top-0 left-0 p-1 border-2 border-gray-400">
+				<Link to="/">
+					<button>Login</button>
+				</Link>
+			</p>
 			<p className="absolute top-0 text-2xl p-2">{time}</p>
 			<div className="border-2 border-black p-10">
 				<h1 className="text-center">Enter Your Current Location</h1>

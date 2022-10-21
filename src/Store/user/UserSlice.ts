@@ -12,12 +12,14 @@ interface userState {
     users : user[]
     loggedIn: boolean
     currentUser: string | null
+    location : string | null
 }
 
 const initialState: userState = {
     users: [],
     loggedIn: false,
-    currentUser: null
+    currentUser: null,
+    location: null
 }
 
 export const userSlice = createSlice({
@@ -26,19 +28,23 @@ export const userSlice = createSlice({
     reducers: {
         register: (state, action: PayloadAction<user>) => {
             state.users=[...state.users, 
-                action.payload]
-            // state.value.push(action.payload)
+                action.payload,]
+            state.currentUser = action.payload.email
+            state.loggedIn = true
         },
         login: (state, action: PayloadAction<user>) => {
             // state.loggedIn = true
-            const user = state.users.find((user) => user.email === action.payload.email && user.password === action.payload.password)
+            const user = state.users.find((user) => user.email === action.payload.email && user.password == action.payload.password)
             if(user){
                  state.loggedIn = true
-                 state.currentUser = user.email
+                 state.currentUser = user.email 
             }else{
                 state.loggedIn = false
             }
 
+        },
+        location:(state,action:PayloadAction<string>)=>{
+            state.location = action.payload
         }
     }
 })
@@ -63,4 +69,4 @@ export const userSlice = createSlice({
 // })
 
 
-export const {register,login} = userSlice.actions
+export const {register,login,location} = userSlice.actions

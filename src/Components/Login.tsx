@@ -15,6 +15,7 @@ const Login = () => {
 		name: null
 		email: string
 		password: string
+		currentUser: string
 	}
 
 	const {
@@ -29,7 +30,12 @@ const Login = () => {
 
 	const handleLogin = (data: User) => {
 		// const checkUser = users.find(user=>user.email===data.email && user.password===data.password)
-		dispatch(LoggingIn(data))
+		dispatch(
+			LoggingIn({
+				...data,
+				currentUser: data.email,
+			})
+		)
 		console.log(data, 'login')
 		if (users.loggedIn) {
 			navigate('/location')
