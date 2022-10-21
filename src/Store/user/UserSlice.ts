@@ -5,16 +5,19 @@ interface user {
     name: string | null,
     email: string,
     password: string,
+    currentUser:string | null
 }
 
 interface userState {
     users : user[]
     loggedIn: boolean
+    currentUser: string | null
 }
 
 const initialState: userState = {
     users: [],
-    loggedIn: false
+    loggedIn: false,
+    currentUser: null
 }
 
 export const userSlice = createSlice({
@@ -31,6 +34,7 @@ export const userSlice = createSlice({
             const user = state.users.find((user) => user.email === action.payload.email && user.password === action.payload.password)
             if(user){
                  state.loggedIn = true
+                 state.currentUser = user.email
             }else{
                 state.loggedIn = false
             }

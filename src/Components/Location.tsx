@@ -1,9 +1,11 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
+import { useAppSelector } from '../Store/hooks'
 
 const Location = () => {
 	const time = new Date().toLocaleTimeString()
 	const { register, handleSubmit, reset } = useForm()
+	const users = useAppSelector(state => state.users)
 
 	const handleLocation = (data: any) => {
 		reset()
