@@ -12,7 +12,7 @@ const Home = () => {
 		'https://i.ibb.co/dP1PbxL/korat-1.png',
 		'https://i.ibb.co/NttxFwS/knife-1.png',
 	]
-	const { location, currentUser } = useAppSelector(state => state.users)
+	// const { location, currentUser } = useAppSelector(state => state.users)
 
 	return (
 		<div>

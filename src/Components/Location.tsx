@@ -1,13 +1,12 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
-import { useAppDispatch, useAppSelector } from '../Store/hooks'
+import { useAppDispatch } from '../Store/hooks'
 import { location } from '../Store/user/UserSlice'
 
 const Location = () => {
 	const time = new Date().toLocaleTimeString()
 	const { register, handleSubmit, reset } = useForm()
-	const users = useAppSelector(state => state.users)
 	const dispatch = useAppDispatch()
 	const navigate = useNavigate()
 
@@ -15,7 +14,6 @@ const Location = () => {
 		dispatch(location(data.location))
 		reset()
 		navigate('/')
-		console.log(data)
 	}
 	return (
 		<div className="flex flex-col items-center justify-center w-full h-screen">

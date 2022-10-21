@@ -33,7 +33,11 @@ const Login = () => {
 				currentUser: data.email,
 			})
 		)
-		if (users.loggedIn) {
+		const matched = users.users.find(
+			user => user.email === data.email && user.password === data.password
+		)
+		console.log(matched?.name, 'mathced', data)
+		if (matched?.name) {
 			navigate('/location')
 		} else {
 			alert('Invalid Credentials')
