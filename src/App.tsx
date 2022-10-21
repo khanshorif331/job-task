@@ -6,7 +6,6 @@ import Login from './Components/Login'
 function App() {
 	return (
 		<div>
-			{/* <h1 className="text-center">Hey ami shoorif</h1> */}
 			<Routes>
 				<Route path="/" element={<Login></Login>}></Route>
 				<Route path="/login" element={<Login></Login>}></Route>
